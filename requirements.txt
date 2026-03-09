@@ -1,4 +1,4 @@
-mcp
+mcp[cli]
 yfinance>=0.2.38
 pandas>=2.2.0
 pandas-ta
