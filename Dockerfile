@@ -26,6 +26,5 @@ RUN touch portfolio.db && chmod 666 portfolio.db
 # Expose the port for the SSE transport
 EXPOSE 8000
 
-# Run the server using the MCP CLI with SSE transport
-# This allows Claude to connect via a URL instead of a local process
-CMD ["python", "-m", "mcp", "run", "server.py", "--transport", "sse", "--port", "8000"]
+# Run the server using the mcp CLI directly
+CMD ["mcp", "run", "server.py", "--transport", "sse", "--port", "8000"]
