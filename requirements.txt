@@ -1,7 +1,7 @@
 mcp
-yfinance>=0.2.0
-pandas<2.2.0
+yfinance>=0.2.38
+pandas>=2.2.0
 pandas-ta
-numpy==1.26.4
+numpy>=1.26.4
 requests
 scipy
