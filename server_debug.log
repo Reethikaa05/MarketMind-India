@@ -1,0 +1,76 @@
+2026-03-09 21:15:24,346 - IndiaQuant - INFO - Server Initialized
+2026-03-09 21:16:18,929 - IndiaQuant - INFO - Server Initialized
+2026-03-09 21:20:12,250 - IndiaQuant - INFO - Server Initialized
+2026-03-09 21:20:12,282 - IndiaQuant - INFO - Starting IndiaQuant Server
+2026-03-09 21:20:12,373 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-09 21:20:12,379 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-09 21:20:12,383 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-09 21:21:29,040 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 21:26:47,036 - IndiaQuant - INFO - Server Initialized
+2026-03-09 21:26:47,112 - IndiaQuant - INFO - Starting IndiaQuant Server
+2026-03-09 21:26:47,184 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-09 21:26:47,193 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-09 21:26:47,199 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-09 21:27:17,140 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 21:27:27,715 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 21:28:04,056 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 21:28:12,326 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 22:52:42,442 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 22:53:46,752 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 22:55:39,630 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 22:59:58,394 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:00:47,802 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:00:50,795 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:01:34,935 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:01:47,084 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:02:37,409 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:02:40,058 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:02:44,360 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:03:40,918 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:03:44,175 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:28,652 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:35,251 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:37,470 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:39,999 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:42,602 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:44,976 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:47,574 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:50,227 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:53,008 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:56,171 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:04:58,927 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:02,638 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:06,054 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:10,740 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:14,083 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:19,688 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:22,289 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:28,763 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:05:31,806 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:26,893 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:30,348 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:32,846 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:35,373 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:42,123 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:08:52,404 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:27,979 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:34,096 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:38,560 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:49,601 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:52,760 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:11:54,395 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NIFTY.NS"}}}
+2026-03-09 23:11:55,065 - yfinance - ERROR - $NIFTY.NS: possibly delisted; no price data found  (period=1d) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-09 23:11:55,579 - yfinance - ERROR - $NIFTY.NS: possibly delisted; no price data found  (period=5d) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-09 23:11:57,867 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:04,075 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:06,848 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:12,013 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:15,505 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:20,087 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:24,416 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:28,769 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:34,122 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:39,197 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:44,776 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:12:51,055 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-09 23:13:10,050 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
