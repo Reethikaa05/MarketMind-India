@@ -27,4 +27,4 @@ RUN touch portfolio.db && chmod 666 portfolio.db
 EXPOSE 8000
 
 # Run the server using the mcp CLI with SSE transport
-CMD ["mcp", "run", "server.py", "--transport", "sse"]
+CMD ["mcp", "run", "server.py", "--transport", "sse", "--host", "0.0.0.0"]
