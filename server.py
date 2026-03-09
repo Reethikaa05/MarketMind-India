@@ -95,8 +95,8 @@ if __name__ == "__main__":
         if is_cloud:
             import uvicorn
             logger.info(f"Starting IndiaQuant SSE Server on 0.0.0.0:{port}")
-            # FastMCP instances are ASGI compatible
-            uvicorn.run(mcp, host="0.0.0.0", port=port)
+            # FastMCP has a dedicated sse_app that is ASGI compatible
+            uvicorn.run(mcp.sse_app, host="0.0.0.0", port=port)
         else:
             logger.info("Starting IndiaQuant Context Server (Stdio)")
             mcp.run()
