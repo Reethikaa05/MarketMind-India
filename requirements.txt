@@ -1,6 +1,6 @@
 mcp
 yfinance
 pandas==2.1.4
-pandas-ta @ git+https://github.com/twopirllc/pandas-ta.git@development
+pandas-ta
 requests
 scipy
