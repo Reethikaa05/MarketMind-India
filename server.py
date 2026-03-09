@@ -87,8 +87,20 @@ async def get_portfolio_pnl() -> dict:
 
 if __name__ == "__main__":
     try:
-        logger.info("Starting IndiaQuant Server")
-        mcp.run()
+        # Check if we are running in a cloud environment (like Render)
+        # by checking for the PORT environment variable
+        port = int(os.environ.get("PORT", 8000))
+        is_cloud = "PORT" in os.environ
+        
+        if is_cloud:
+            import uvicorn
+            logger.info(f"Starting IndiaQuant SSE Server on 0.0.0.0:{port}")
+            # FastMCP instances are ASGI compatible
+            uvicorn.run(mcp, host="0.0.0.0", port=port)
+        else:
+            logger.info("Starting IndiaQuant Context Server (Stdio)")
+            mcp.run()
+            
     except Exception as e:
         logger.error(f"Server error: {str(e)}", exc_info=True)
         raise

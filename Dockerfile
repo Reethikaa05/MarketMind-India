@@ -26,5 +26,7 @@ RUN touch portfolio.db && chmod 666 portfolio.db
 # Expose the port for the SSE transport
 EXPOSE 8000
 
-# Run the server using the mcp CLI with SSE transport
-CMD ["mcp", "run", "server.py", "--transport", "sse", "--host", "0.0.0.0"]
+# Run the server using the python command directly. 
+# The server.py is now smart enough to detect the PORT environment variable
+# and start as an SSE server on 0.0.0.0.
+CMD ["python", "server.py"]
