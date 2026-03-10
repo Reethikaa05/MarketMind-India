@@ -1,101 +1,149 @@
-﻿﻿# 🇮🇳 MarketMind India: AI-Powered Market Intelligence
+﻿# 🇮🇳 MarketMind India: The Ultimate Indian Stock Market MCP Server
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green.svg)](https://modelcontextprotocol.io)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![MCP Protocol](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green.svg)](https://modelcontextprotocol.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/Reethikaa05/MarketMind-India)
+[![Build Status](https://github.com/Reethikaa05/MarketMind-India/actions/workflows/ci.yml/badge.svg)](https://github.com/Reethikaa05/MarketMind-India/actions)
 
-**MarketMind India** is a professional-grade Model Context Protocol (MCP) server that integrates deep financial intelligence into Claude Desktop. It enables real-time Indian stock market analysis, virtual portfolio management, and advanced derivative math—all within a unified AI chat interface.
+**MarketMind India** is a mission-critical Model Context Protocol (MCP) server designed to bridge the gap between Large Language Models (LLMs) and the National Stock Exchange (NSE) / Bombay Stock Exchange (BSE). It transforms Claude into a high-fidelity financial analyst capable of real-time price discovery, derivative math, and virtual asset management.
 
 ---
 
-## 🏗 System Architecture
+## 🏗 System Architecture Design
 
-The project follows a modular "Engine-based" architecture to ensure low latency and high reliability in financial data processing.
+MarketMind India is built on a **decoupled, engine-centric architecture**. This ensures that data retrieval, financial calculations, and state management are isolated, making the system resilient to API changes and easy to scale.
 
+### Architecture Diagram
 ```mermaid
 graph TD
-    A[Claude Desktop Client] <--> B[MCP Server Layer]
-    B <--> C{Engine Core}
-    
-    subgraph "Engine Core"
-    C --> D[Market Data Engine]
-    C --> E[Options Analyzer]
-    C --> F[Signal Generator]
-    C --> G[Portfolio Manager]
+    subgraph "External World"
+        YF[yfinance API]
+        NEWS[News Feeds]
     end
-    
-    D --> H[(yfinance API)]
-    E --> I[Black-Scholes Model]
-    F --> J[(NewsAPI / Technicals)]
-    G --> K[(SQLite Persistence)]
-    
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#bbf,stroke:#333,stroke-width:2px
+
+    subgraph "Claude Ecosystem"
+        CL[Claude Desktop] -- MCP Protocol --> FAST[FastMCP Server]
+    end
+
+    subgraph "MarketMind Core Engines"
+        FAST -- invokes --> MDE[Market Data Engine]
+        FAST -- invokes --> OA[Options Analyzer]
+        FAST -- invokes --> SG[Signal Generator]
+        FAST -- invokes --> PM[Portfolio Manager]
+    end
+
+    subgraph "Data & Analytics"
+        MDE --> YF
+        OA --> BS[Black-Scholes Math Engine]
+        SG --> TA[pandas-ta Indicators]
+        SG --> NEWS
+        PM --> DB[(SQLite Database)]
+    end
+
+    style CL fill:#f9f,stroke:#333,stroke-width:2px
+    style FAST fill:#bbf,stroke:#333,stroke-width:2px
+    style DB fill:#eee,stroke:#333
 ```
 
----
-
-## 💎 Core Technical Innovations
-
-### 1. Zero-Dependency Greeks Engine
-Unlike standard implementations that rely on high-level financial libraries, MarketMind calculates **Greeks from scratch** using the Black-Scholes-Merton model via `scipy` and `numpy`. 
-- **Calculations:** Delta, Gamma, Theta, Vega, Rho.
-- **Accuracy:** Verified against standard exchange-traded benchmarks.
-
-### 2. Intelligent Symbol Middleware
-Automated normalization of Indian symbols (NSE/BSE). It converts user inputs like `RELIANCE` or `Nifty 50` into API-ready symbols (`RELIANCE.NS`, `^NSEI`) automatically, providing a seamless user experience.
-
-### 3. Persistent Virtual Portfolio
-A robust paper-trading system backed by **SQLite**. It tracks entry prices, current PnL, and transaction history, allowing users to safely test strategies in real-market conditions without financial risk.
+### System Components:
+1.  **FastMCP Server Layer**: Handles the JSON-RPC communication between Claude and the Python logic.
+2.  **Market Data Engine**: Abstracted layer for symbol normalization (e.g., `TCS` ➡️ `TCS.NS`) and multi-threaded data fetching.
+3.  **Options Analyzer**: Implements complex mathematical models (Black-Scholes-Merton) to derive Greeks without external financial dependencies.
+4.  **Trade Signal Generator**: A logic layer that synthesizes technical trends (RSI/MACD) with unstructured news data to provide high-level recommendations.
+5.  **Portfolio Manager**: A persistence layer using SQLite to maintain a virtual 10 Lakh INR paper-trading account.
 
 ---
 
-## 🛠 Available MCP Tools
+## 🛠 10 Functional MCP Tools
 
-| Tool | Category | Description |
+MarketMind India exposes exactly 10 high-performance tools to the LLM:
+
+| Tool Name | Operation | Description |
 | :--- | :--- | :--- |
-| `get_live_price` | Data | Fetches live CMP, Change %, and Volume with 📈/📉 indicators. |
-| `get_options_chain` | Derivatives | Retrieves full NSE/BSE options chains with IV and Open Interest. |
-| `calculate_greeks` | Math | High-precision Black-Scholes Greeks calculation for any contract. |
-| `place_virtual_trade` | Trading | Executes a paper trade with persistent SQLite logging. |
-| `get_portfolio_pnl` | Portfolio | Real-time valuation of all open positions with aggregate PnL. |
-| `get_market_sentiment` | AI | Analyzes recent news to provide a Bullish/Bearish score. |
+| `get_live_price` | **Data** | Fetches live CMP, daily change, and volume for any NSE/BSE symbol. |
+| `get_options_chain` | **Derivatives** | Retrieves full options chains (Call/Put) including IV and Open Interest. |
+| `calculate_greeks` | **Analytics** | Computes Delta, Gamma, Theta, Vega, Rho using our custom math engine. |
+| `detect_unusual_activity` | **Scanning** | Identifies contracts with high Volume-to-OI ratios (>5x). |
+| `analyze_sentiment` | **AI** | Scrapes headlines from yfinance/NewsAPI to gauge market sentiment. |
+| `generate_signal` | **Technical** | Combines RSI, MACD, and Bollinger Bands into Buy/Sell signals. |
+| `scan_market` | **Discovery** | Scans Nifty 50 stocks for specific price/technical criteria. |
+| `get_sector_heatmap` | **Macro** | Returns performance of all major indices (Bank, IT, Auto, etc.). |
+| `place_virtual_trade` | **Execution** | Performs virtual paper trades (BUY/SELL) with instant SQLite logging. |
+| `get_portfolio_pnl` | **Portfolio** | Returns live P&L, net liquidation value, and asset allocation. |
 
 ---
 
-## 🚀 Setup & Installation (3 Minutes)
+## ⚖️ Architecture Decisions & Trade-offs
 
-### 1. Prerequisites
-Ensure you have **Python 3.11+** and **Node.js** installed.
+During the development of MarketMind India, several critical design decisions were made to balance performance with developer accessibility:
 
-### 2. Installation
-```bash
-# Clone the repository
-git clone https://github.com/Reethikaa05/MarketMind-India.git
-cd MarketMind-India
+### 1. Choice of Data Source: `yfinance` over Official NSE APIs
+-   **Decision**: Use `yfinance` for all real-time market data.
+-   **Trade-off**: While official NSE APIs (via Zerodha/Upstox) offer lower latency, they require complex OAuth setups and paid subscriptions. `yfinance` allows for a **zero-config experience** for users, though data may be delayed by up to 15 minutes.
 
-# Setup environment
-python -m venv venv
-.\venv\Scripts\activate
-pip install -r requirements.txt
-```
+### 2. Math Implementation: Custom Black-Scholes vs. External Libraries
+-   **Decision**: Implement Black-Scholes math manually within `options_analyzer.py`.
+-   **Trade-off**: Avoids heavy "black-box" dependencies like `quantlib`, making the codebase lighter and the calculations fully transparent for auditing.
 
-### 3. Configure Claude Desktop
-Add the following to your `claude_desktop_config.json`:
+### 3. State Management: SQLite vs. In-Memory
+-   **Decision**: Use SQLite for portfolio tracking.
+-   **Trade-off**: In-memory storage is faster but data is lost on server restart. SQLite provides **persistence** while remaining lightweight enough to run without a separate database server (like PostgreSQL).
 
-> [!TIP]
-> **Windows Path (Standard):** `%APPDATA%\Claude\claude_desktop_config.json`
-> **Windows Path (MS Store):** `%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`
+### 4. Language Choice: Python 3.12
+-   **Decision**: Native Python with type hinting.
+-   **Trade-off**: While Rust or Go might offer faster execution, Python is the lingua franca of Finance and AI, ensuring the server is easily modifiable by quant researchers.
+
+---
+
+## 💻 Technical Stack
+
+MarketMind India is built on top of a modern, efficient tech stack:
+
+-   **Backend Protocol**: [FastMCP](https://github.com/jlowin/fastmcp) (Python framework for MCP)
+-   **Financial Data**: `yfinance` (Real-time market feeds)
+-   **Data Processing**: `pandas`, `numpy`
+-   **Technical Indicators**: `pandas-ta` (RSI, MACD, Bollinger Bands)
+-   **Mathematical Models**: `scipy` (Normalized distribution for Greeks)
+-   **Database**: `sqlite3` (Asset & Transaction persistence)
+-   **Streaming**: `uvicorn` (Cloud SSE support)
+-   **Infrastructure**: `Docker` (Multi-stage builds)
+
+---
+
+## 🚀 Setup & Installation Guide
+
+### Local Installation
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/Reethikaa05/MarketMind-India.git
+    cd MarketMind-India
+    ```
+2.  **Setup Environment**:
+    ```bash
+    python -m venv venv
+    .\venv\Scripts\activate  # Windows
+    # source venv/bin/activate # Linux/Mac
+    ```
+3.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Run Server**:
+    ```bash
+    python server.py
+    ```
+
+### Claude Desktop Integration
+Modify your `claude_desktop_config.json` with the following configuration:
 
 ```json
 {
   "mcpServers": {
     "marketmind": {
-      "command": "C:/Path/To/Your/Project/venv/Scripts/python.exe",
+      "command": "C:/Path/To/Your/venv/Scripts/python.exe",
       "args": ["C:/Path/To/Your/Project/server.py"],
       "env": {
-        "NEWSAPI_KEY": "your_api_key_here"
+        "NEWSAPI_KEY": "your_api_key_optional"
       }
     }
   }
@@ -104,22 +152,36 @@ Add the following to your `claude_desktop_config.json`:
 
 ---
 
-## ✅ Quality Assurance & Testing
-MarketMind includes a comprehensive test suite to ensure mathematical and data integrity.
+## ☁️ Cloud & Docker Deployment
 
+The server is optimized for high-availability deployment on **Render**, **Railway**, or **AWS ECS**.
+
+### Docker Deployment:
+```bash
+docker build -t marketmind-india .
+docker run -p 8000:8000 marketmind-india
+```
+
+**Note**: When running in the cloud, the server automatically starts in **SSE (Server-Sent Events) mode**, exposing a public endpoint for remote AI agents.
+
+---
+
+## 🧪 Testing & Validation
+Verify system integrity using the built-in test suite:
 ```bash
 python -m unittest tests/test_suite.py
 ```
-- **Tests Passed:** Symbol Formatting, Greeks Math Verification, API Mocking.
+**Coverage includes**:
+-   Mathematical Greeks verification (Standard Normal Distribution accuracy).
+-   Symbol normalization logic.
+-   API response structure validation.
 
 ---
 
-## 🏆 Features Included
--   **Dockerization:** High-performance Dockerfile optimized for Python 3.12-slim.
--   **Cloud-Ready:** Enhanced server entry point compatible with Render/Railway deployment.
--   **SSE Bridge:** Includes a custom Node.js bridge for remote cloud-to-local connectivity.
+## 🎯 Future Roadmap
+-   [ ] **Real-time News Sentiment**: Integration with specialized NLP models for better headline analysis.
+-   [ ] **Backfilling Data**: Ability to run historical backtests on virtual portfolios.
+-   [ ] **Advanced Options Strategies**: Multi-leg spread analysis (Iron Condors, Spreads).
 
 ---
-*Developed by [Reethika](https://github.com/Reethikaa05/MarketMind-India) — Bridging the gap between AI and Indian Financial Intelligence.*
-
-
+*Developed by [Reethika](https://github.com/Reethikaa05/MarketMind-India) — Empowering AI with Indian Financial Intelligence.*
