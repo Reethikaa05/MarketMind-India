@@ -73,6 +73,36 @@ MarketMind India exposes exactly 10 high-performance tools to the LLM:
 
 ---
 
+## 📷 Visual Showcase
+
+### 1. Unified AI Interface
+MarketMind integrates directly into the Claude chat interface, allowing you to ask complex financial questions and get data-driven answers instantly.
+
+![Market Analysis Preview](Screenshot/MARKETIN2.PNG)
+*Live analysis of HDFC Bank using the IndiaQuant integration.*
+
+### 2. Real-Time Price Discovery
+Tools like `get_live_price` provide clean, formatted data tables with the latest market metrics.
+
+![Live Price Preview](Screenshot/RUNimage1.PNG)
+*Real-time data for Reliance Industries.*
+
+### 3. Server Management
+The server is designed to run locally or in the cloud with minimal configuration.
+
+![Server Dashboard](Screenshot/marin4.PNG)
+*The IndiaQuant MCP server running and connected.*
+
+### 4. Advanced Toolchain
+Multiple tools can be chained together by the AI to perform deep-dive market scans.
+
+![Toolchain Demo](Screenshot/MARIN3.PNG)
+*AI intelligently selecting and running multiple tools for a comprehensive market scan.*
+
+---
+
+---
+
 ## ⚖️ Architecture Decisions & Trade-offs
 
 During the development of MarketMind India, several critical design decisions were made to balance performance with developer accessibility:
