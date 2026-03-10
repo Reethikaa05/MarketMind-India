@@ -59,12 +59,17 @@ class MarketDataEngine:
         Scan market. This is a heavy operation to do live across all stocks without a proper screener API.
         We'll scan Nifty 50 stocks as a proxy for 'the market'.
         """
-        # Nifty 50 list sample
         nifty50_symbols = [
             "RELIANCE", "TCS", "HDFCBANK", "ICICIBANK", "INFY", "ITC", "SBIN",
             "BHARTIARTL", "BAJFINANCE", "HINDUNILVR", "LT", "ASIANPAINT",
-            "HCLTECH", "AXISBANK", "MARUTI", "SUNPHARMA", "TITAN", "ULTRACEMCO"
-        ] # Truncated for speed
+            "HCLTECH", "AXISBANK", "MARUTI", "SUNPHARMA", "TITAN", "ULTRACEMCO",
+            "ADANIENT", "ADANIPORTS", "APOLLOHOSP", "BAJAJ-AUTO", "BAJAJFINSV",
+            "BPCL", "BRITANNIA", "CIPLA", "COALINDIA", "DIVISLAB", "DRREDDY",
+            "EICHERMOT", "GRASIM", "HDFCLIFE", "HEROMOTOCO", "HINDALCO",
+            "INDUSINDBK", "JSWSTEEL", "KOTAKBANK", "LTIM", "M&M", "NESTLEIND",
+            "NTPC", "ONGC", "POWERGRID", "SHRIRAMFIN", "TATACONSUM", "TATAMOTORS",
+            "TATASTEEL", "TECHM", "WIPRO"
+        ]
 
         results = []
         for sym in nifty50_symbols:

@@ -8,53 +8,64 @@ class TradeSignalGenerator:
         self.newsapi_key = newsapi_key or "demo_key" # Should use environment variable
 
     def analyze_sentiment(self, symbol: str) -> dict:
-        """Analyze sentiment logically based on headlines via NewsAPI"""
-        # Since we might not have a real NewsAPI key, we still need to mimic the logic correctly.
-        query = symbol
-        url = f"https://newsapi.org/v2/everything?q={query}&language=en&sortBy=publishedAt&apiKey={self.newsapi_key}"
+        """Analyze sentiment logically based on headlines via yfinance or NewsAPI"""
+        formatted_symbol = symbol + ".NS" if not symbol.endswith(".NS") else symbol
         
+        headlines = []
+        source = "yfinance"
+        
+        # Try yfinance news first as it doesn't require an API key
         try:
-            # Using a real query, if fail, return neutral.
-            response = requests.get(url, timeout=5)
-            data = response.json()
+            ticker = yf.Ticker(formatted_symbol)
+            news = ticker.news
+            if news:
+                headlines = [n.get("title") for n in news[:8]]
             
-            if data.get("status") == "ok":
-                articles = data.get("articles", [])[:5]
-                headlines = [a.get("title") for a in articles]
-                
-                # Basic sentiment scoring since we can't use complex paid NLP APIs.
-                positive_words = ["surge", "jump", "grow", "buy", "up", "bull", "profit", "win", "beat"]
-                negative_words = ["drop", "fall", "sell", "down", "bear", "loss", "miss", "crash"]
-                
-                score = 0
-                for headline in headlines:
-                    lower = headline.lower()
-                    if any(w in lower for w in positive_words): score += 1
-                    if any(w in lower for w in negative_words): score -= 1
-                    
-                if score > 0:
-                    signal = "BULLISH"
-                elif score < 0:
-                    signal = "BEARISH"
-                else:
-                    signal = "NEUTRAL"
-                    
-                return {
-                    "symbol": symbol,
-                    "score": score,
-                    "headlines": headlines,
-                    "signal": signal
-                }
-            else:
-                return {
-                    "symbol": symbol,
-                    "score": 0,
-                    "headlines": ["Error fetching or API limit reached"],
-                    "signal": "NEUTRAL"
-                }
-
+            # If yfinance news is empty and we have a NewsAPI key, try NewsAPI
+            if not headlines and self.newsapi_key and self.newsapi_key != "demo_key":
+                source = "NewsAPI"
+                url = f"https://newsapi.org/v2/everything?q={symbol}&language=en&sortBy=publishedAt&apiKey={self.newsapi_key}"
+                response = requests.get(url, timeout=5)
+                data = response.json()
+                if data.get("status") == "ok":
+                    articles = data.get("articles", [])[:10]
+                    headlines = [a.get("title") for a in articles]
         except Exception as e:
-            return {"error": str(e), "signal": "NEUTRAL"}
+            return {"error": str(e), "signal": "NEUTRAL", "source": "error"}
+
+        if not headlines:
+            return {
+                "symbol": symbol,
+                "score": 0,
+                "headlines": ["No recent news found"],
+                "signal": "NEUTRAL",
+                "source": source
+            }
+
+        # Basic sentiment scoring
+        positive_words = ["surge", "jump", "grow", "buy", "up", "bull", "profit", "win", "beat", "positive", "high", "success"]
+        negative_words = ["drop", "fall", "sell", "down", "bear", "loss", "miss", "crash", "negative", "low", "failure", "slump"]
+        
+        score = 0
+        for headline in headlines:
+            lower = headline.lower()
+            if any(w in lower for w in positive_words): score += 1
+            if any(w in lower for w in negative_words): score -= 1
+            
+        if score > 0:
+            signal = "BULLISH"
+        elif score < 0:
+            signal = "BEARISH"
+        else:
+            signal = "NEUTRAL"
+            
+        return {
+            "symbol": symbol,
+            "score": score,
+            "headlines": headlines,
+            "signal": signal,
+            "source": source
+        }
 
     def generate_signal(self, symbol: str, timeframe: str = "1d") -> dict:
         """Combine technicals to generate BUY/SELL/HOLD and confidence"""
