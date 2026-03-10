@@ -1,4 +1,4 @@
-﻿# 🇮🇳 MarketMind India: AI-Powered Market Intelligence
+﻿﻿# 🇮🇳 MarketMind India: AI-Powered Market Intelligence
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green.svg)](https://modelcontextprotocol.io)
@@ -121,4 +121,5 @@ python -m unittest tests/test_suite.py
 
 ---
 *Developed by [Reethika](https://github.com/Reethikaa05/MarketMind-India) — Bridging the gap between AI and Indian Financial Intelligence.*
+
 
