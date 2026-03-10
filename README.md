@@ -101,8 +101,6 @@ Multiple tools can be chained together by the AI to perform deep-dive market sca
 
 ---
 
----
-
 ## ⚖️ Architecture Decisions & Trade-offs
 
 During the development of MarketMind India, several critical design decisions were made to balance performance with developer accessibility:
